@@ -1,16 +1,25 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply dark:bg-black dark:text-gray-200;
+  }
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+@layer components {
+  .floating-input > input::placeholder {
+    color: transparent;
+  }
 
-* {
-  box-sizing: border-box;
+  .floating-input > input:focus,
+  .floating-input > input:not(:placeholder-shown) {
+    @apply pt-8;
+  }
+
+  .floating-input > input:focus ~ label,
+  .floating-input > input:not(:placeholder-shown) ~ label {
+    @apply text-blue-primary scale-75 -translate-y-3 translate-x-1;
+  }
 }
